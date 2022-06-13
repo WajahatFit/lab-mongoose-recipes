@@ -30,8 +30,8 @@ mongoose
   .then(()=>{
     return Recipe.findOneAndUpdate({title: 'Rigatoni alla Genovese'} , {duration:100})
   })
-  .then(()=> {
-    console.log(Recipe.find({title:'Rigatoni alla Genovese'}))
+  .then((updatedRecipe)=> {
+    console.log(updatedRecipe);
   })
   .then(()=> {
     return Recipe.deleteOne({title:'Carrot Cake'})
@@ -44,4 +44,5 @@ mongoose
   })
   .then(()=>{
     mongoose.connection.close();
-  });
+  })
+  .finally(()=> console.log('this is from finally!'))
